@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC Fabric 1.21.1服务器 - 游玩日常</title>
+    <title>MC Fabric 1.21.1服务器 - 发布故事</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -15,23 +15,31 @@
         <p>生存 | 建造 | 红石</p>
     </div>
 
-    <div class="container">
-        <h2>服务器游玩日常</h2>
-
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <h2>发布你的日常故事</h2>
+        
         <!-- 编辑器容器 -->
-        <div id="editor-container"></div>
+        <div class="editor-container" id="editor-container"></div>
 
-        <!-- 图片上传按钮 -->
-        <input type="file" id="image-upload" accept="image/*" style="display: none;">
-        <button onclick="document.getElementById('image-upload').click()">上传图片</button>
-
-        <!-- 发布按钮 -->
-        <button onclick="publishContent()">发布</button>
+        <!-- 功能按钮 -->
+        <div class="button-container">
+            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+            <button class="action-button" onclick="document.getElementById('image-upload').click()">
+                <span class="button-text">上传图片</span>
+            </button>
+            <button class="action-button" onclick="publishContent()">
+                <span class="button-text">发布故事</span>
+            </button>
+        </div>
 
         <!-- 发布记录 -->
-        <div id="publication-history"></div>
+        <div class="publication-history" id="publication-history">
+            <h3>最近发布的日常</h3>
+        </div>
     </div>
 
+    <!-- 页脚 -->
     <div class="footer">
         <p>© 2024 MC Fabric 1.21.1服务器</p>
     </div>
