@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Fabric 1.21.1服务器 - 生存建造红石世界</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .navbar {
+            background-color: #2d2d2d;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 轮播图样式 */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            background-color: #333;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 指示点样式 */
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-nav button {
+            width: 12px;
+            height: 12px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-nav button.active {
+            background-color: #ffffff;
+        }
+
+        /* 内容部分样式 */
+        .content-section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background-color: #2d2d2d;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>MC Fabric 1.21.1服务器</h1>
+        <p>生存 | 建造 | 红石</p>
+    </div>
+
+    <div class="container">
+        <!-- 轮播图部分 -->
+        <div class="slider-container">
+            <div class="slider">
+                <!-- 每个slide代表一张图片 -->
+                <div class="slide">
+                    <img src="https://example.com/screenshot1.jpg" alt="生存模式">
+                </div>
+                <div class="slide">
+                    <img src="https://example.com/screenshot2.jpg" alt="建造作品">
+                </div>
+                <div class="slide">
+                    <img src="https://example.com/screenshot3.jpg" alt="红石机械">
+                </div>
+            </div>
+            <!-- 指示点 -->
+            <div class="slider-nav"></div>
+        </div>
+
+        <!-- 内容部分 -->
+        <div class="content-section">
+            <h2>欢迎来到我们的Minecraft世界</h2>
+            <p>版本：1.21.1 Fabric</p>
+            <p>我们提供纯正的生存体验，自由的建造空间和复杂的红石工程。</p>
+        </div>
+
+        <div class="content-section">
+            <h3>生存</h3>
+            <p>挑战极限，探索未知，体验真实的生存乐趣。</p>
+        </div>
+
+        <div class="content-section">
+            <h3>建造</h3>
+            <p>展现你的创造力，建造属于自己的独特建筑。</p>
+        </div>
+
+        <div class="content-section">
+            <h3>红石</h3>
+            <p>打造复杂的机械装置，探索红石的无限可能。</p>
+        </div>
+
+        <div class="content-section">
+            <h3>下载地址</h3>
+            <p>服务器版本：1.21.1 Fabric</p>
+            <p>点击下方链接下载客户端：</p>
+            <a href="#">下载地址</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 MC Fabric 1.21.1服务器</p>
+    </div>
+
+    <script>
+        // 轮播逻辑
+        const slider = document.querySelector('.slider');
+        const sliderNav = document.querySelector('.slider-nav');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+
+        // 创建指示点
+        slides.forEach((_, index) => {
+            const button = document.createElement('button');
+            button.dataset.index = index;
+            if (index === 0) {
+                button.classList.add('active');
+            }
+            button.addEventListener('click', () => goToSlide(index));
+            sliderNav.appendChild(button);
+        });
+
+        // 自动播放
+        const interval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }, 5000); // 每5秒切换一次
+
+        // 切换到指定幻灯片
+        function goToSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            
+            // 更新指示点
+            document.querySelectorAll('.slider-nav button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.slider-nav button[data-index="${index}"]`).classList.add('active');
+        }
+
+        // 停止自动播放（可选）
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(interval);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            interval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(currentSlide);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
