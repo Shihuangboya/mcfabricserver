@@ -17,9 +17,13 @@
 
     <div class="container">
         <h2>服务器游玩日常</h2>
-        
+
         <!-- 编辑器容器 -->
         <div id="editor-container"></div>
+
+        <!-- 图片上传按钮 -->
+        <input type="file" id="image-upload" accept="image/*" style="display: none;">
+        <button onclick="document.getElementById('image-upload').click()">上传图片</button>
 
         <!-- 发布按钮 -->
         <button onclick="publishContent()">发布</button>
@@ -32,120 +36,6 @@
         <p>© 2024 MC Fabric 1.21.1服务器</p>
     </div>
 
-    <script>
-        // 初始化编辑器
-        ClassicEditor
-            .create(document.querySelector('#editor-container'), {
-                toolbar: {
-                    items: [
-                        'heading',
-                        '|',
-                        'bold',
-                        'italic',
-                        'link',
-                        'bulletedList',
-                        'numberedList',
-                        'undo',
-                        'redo'
-                    ]
-                }
-            })
-            .then(editor => {
-                console.log('Editor was initialized', editor);
-            })
-            .catch(error => {
-                console.error('Error occurred while initializing the editor', error);
-            });
-
-        // 获取最后一次发布时间
-        function getLastPublishTime() {
-            return localStorage.getItem('lastPublishTime') || 0;
-        }
-
-        // 检查发布限制
-        function canPublish() {
-            const lastTime = parseInt(getLastPublishTime());
-            const currentTime = Date.now();
-            const timeDiff = currentTime - lastTime;
-
-            if (timeDiff < 180000) { // 3分钟 = 180000 毫秒
-                const remaining = Math.ceil((180000 - timeDiff) / 1000);
-                Swal.fire({
-                    title: '发布限制',
-                    text: `请等待 ${remaining} 秒后再发布！`,
-                    icon: 'warning',
-                    timer: 2000
-                });
-                return false;
-            }
-            return true;
-        }
-
-        // 发布内容
-        function publishContent() {
-            if (!canPublish()) return;
-
-            const content = document.querySelector('#editor-container').innerHTML;
-            const title = prompt('请输入故事标题：');
-
-            if (!title || !content) {
-                Swal.fire({
-                    title: '发布失败',
-                    text: '标题和内容不能为空！',
-                    icon: 'error'
-                });
-                return;
-            }
-
-            // 存储到 localStorage
-            const post = {
-                title,
-                content,
-                author: '匿名用户',
-                time: new Date().toLocaleString(),
-                id: Date.now().toString()
-            };
-
-            const posts = JSON.parse(localStorage.getItem('posts')) || [];
-            posts.unshift(post);
-            localStorage.setItem('posts', JSON.stringify(posts));
-
-            // 更新最后一次发布时间
-            localStorage.setItem('lastPublishTime', Date.now().toString());
-
-            // 提示发布成功
-            Swal.fire({
-                title: '发布成功',
-                text: '你的故事已发布！',
-                icon: 'success'
-            });
-
-            // 更新发布记录
-            updatePublicationHistory();
-        }
-
-        // 更新发布记录
-        function updatePublicationHistory() {
-            const historyDiv = document.getElementById('publication-history');
-            const posts = JSON.parse(localStorage.getItem('posts')) || [];
-            
-            historyDiv.innerHTML = '<h3>最近发布的日常</h3>';
-            
-            posts.forEach(post => {
-                const postDiv = document.createElement('div');
-                postDiv.className = 'post-item';
-                postDiv.innerHTML = `
-                    <h4>${post.title}</h4>
-                    <p>作者：${post.author}</p>
-                    <p>时间：${post.time}</p>
-                    <div>${post.content}</div>
-                `;
-                historyDiv.appendChild(postDiv);
-            });
-        }
-
-        // 初始化发布记录
-        updatePublicationHistory();
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
