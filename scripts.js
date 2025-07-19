@@ -1,4 +1,4 @@
-// 初始化编辑器
+// 初始化CKEditor5编辑器
 ClassicEditor
     .create(document.querySelector('#editor-container'), {
         toolbar: {
@@ -13,7 +13,8 @@ ClassicEditor
                 'undo',
                 'redo'
             ]
-        }
+        },
+        language: 'zh-CN'
     })
     .then(editor => {
         console.log('编辑器初始化成功', editor);
