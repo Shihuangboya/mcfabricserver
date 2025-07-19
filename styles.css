@@ -26,6 +26,11 @@ body {
     border-radius: 5px;
 }
 
+/* 确保输入框的字体颜色为黑色 */
+input, textarea, [contenteditable="true"] {
+    color: #000000 !important;
+}
+
 /* 按钮样式 */
 button {
     padding: 10px 20px;
