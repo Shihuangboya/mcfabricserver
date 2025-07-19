@@ -26,15 +26,6 @@ body {
     border-radius: 5px;
 }
 
-/* 预览区域样式 */
-#preview {
-    margin: 20px 0;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    min-height: 300px;
-}
-
 /* 按钮样式 */
 button {
     padding: 10px 20px;
@@ -48,4 +39,29 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+/* 发布记录样式 */
+#publication-history {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.post-item {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.post-item h4 {
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.post-item p {
+    color: #888;
+    margin: 5px 0;
 }
