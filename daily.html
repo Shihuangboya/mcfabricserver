@@ -4,21 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MC Fabric 1.21.1服务器 - 发布故事</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .navbar {
+            background-color: #2d2d2d;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 轮播图样式 */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            background-color: #333;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 指示点样式 */
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-nav button {
+            width: 12px;
+            height: 12px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: default; /* 禁止点击时的手型 */
+            pointer-events: none; /* 禁止点击事件 */
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-nav button.active {
+            background-color: #ffffff;
+        }
+
+        /* 内容部分样式 */
+        .content-section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background-color: #2d2d2d;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <!-- 导航栏 -->
     <div class="navbar">
         <h1>MC Fabric 1.21.1服务器</h1>
+        <h2>服务器日常游玩与公告</h2>
         <p>生存 | 建造 | 红石</p>
     </div>
+
+    <div class="container">
+        <!-- 轮播图部分 -->
+        <div class="slider-container">
+            <div class="slider">
+                <!-- 每个slide代表一张图片 -->
+                <div class="slide">
+                    <img src="img/bg.jpeg" alt="生存模式">
+                </div>
+                <div class="slide">
+                    <img src="img/bg2.jpeg" alt="建造作品">
+                </div>
+                <div class="slide">
+                    <img src="img/bg3.jpg" alt="建造作品2">
+                </div>
+            </div>
+            <!-- 指示点 -->
+            <div class="slider-nav"></div>
+        </div>
+
+        <div class="content-section">
+        <h2>MC Fabric 1.21.1服务器 开服了！！！</h2>
+        <p>MC Fabric 1.21.1服务器 从今天开始开服啦！！！</p>
+        <a href="#"><input type="button" value="查看详细信息"></a>
+        </div>
+    </div>
+
     <!-- 页脚 -->
     <div class="footer">
         <p>© 2024 MC Fabric 1.21.1服务器</p>
     </div>
+    <script>
+        // 轮播逻辑
+        const slider = document.querySelector('.slider');
+        const sliderNav = document.querySelector('.slider-nav');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlide = 0;
 
-    <script src="scripts.js"></script>
+        // 创建指示点
+        slides.forEach((_, index) => {
+            const button = document.createElement('button');
+            button.dataset.index = index;
+            if (index === 0) {
+                button.classList.add('active');
+            }
+            sliderNav.appendChild(button);
+        });
+
+        // 自动播放
+        const interval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }, 5000); // 每5秒切换一次
+
+        // 切换到指定幻灯片
+        function goToSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            
+            // 更新指示点
+            document.querySelectorAll('.slider-nav button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.slider-nav button[data-index="${index}"]`).classList.add('active');
+        }
+
+        // 停止自动播放（可选）
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(interval);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            interval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(currentSlide);
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
