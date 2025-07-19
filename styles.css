@@ -35,6 +35,13 @@ h2 {
     min-height: 400px;
 }
 
+/* 输入框样式 */
+input, textarea, [contenteditable="true"] {
+    color: #000000 !important;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
 /* 按钮样式 */
 .button-container {
     display: flex;
