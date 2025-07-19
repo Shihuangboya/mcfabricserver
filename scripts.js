@@ -52,6 +52,7 @@ function insertImageIntoEditor(imageUrl) {
     const editor = document.querySelector('#editor-container');
     editor.innerHTML += `<img src="${imageUrl}" alt="用户上传的图片" style="max-width: 100%; height: auto;">`;
 }
+
 // 获取最后一次发布时间
 function getLastPublishTime() {
     return localStorage.getItem('lastPublishTime') || 0;
