@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Fabric 1.21.1服务器 - 游玩日常</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <h1>MC Fabric 1.21.1服务器</h1>
+        <p>生存 | 建造 | 红石</p>
+    </div>
+
+    <div class="container">
+        <h2>服务器游玩日常</h2>
+        
+        <!-- 编辑器容器 -->
+        <div id="editor-container"></div>
+
+        <!-- 发布按钮 -->
+        <button onclick="publishContent()">发布</button>
+
+        <!-- 预览区域 -->
+        <div id="preview"></div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 MC Fabric 1.21.1服务器</p>
+    </div>
+
+    <script>
+        // 初始化编辑器
+        ClassicEditor
+            .create( document.querySelector( '#editor-container' ), {
+                // 配置编辑器选项
+                toolbar: {
+                    items: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        'undo',
+                        'redo'
+                    ]
+                }
+            } )
+            .then( editor => {
+                console.log( 'Editor was initialized', editor );
+            } )
+            .catch( error => {
+                console.error( 'Error occurred while initializing the editor', error );
+            } );
+
+        // 发布内容函数
+        function publishContent() {
+            // 获取编辑器内容
+            const content = document.querySelector('#editor-container').innerHTML;
+            
+            // 保存到本地存储
+            localStorage.setItem('dailyContent', content);
+            
+            // 显示预览
+            document.getElementById('preview').innerHTML = content;
+        }
+    </script>
+</body>
+</html>
