@@ -69,7 +69,8 @@
             border: none;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
-            cursor: pointer;
+            cursor: default; /* 禁止点击时的手型 */
+            pointer-events: none; /* 禁止点击事件 */
             transition: background-color 0.3s ease;
         }
 
@@ -114,7 +115,7 @@
                     <img src="img/bg2.jpeg" alt="建造作品">
                 </div>
                 <div class="slide">
-                    <img src="img/bg3.jpg" alt="红石机械">
+                    <img src="img/bg3.jpg" alt="建造作品2">
                 </div>
             </div>
             <!-- 指示点 -->
@@ -144,6 +145,11 @@
         </div>
 
         <div class="content-section">
+            <h3>模组</h3>
+            <p>我们安装了许多模组，让您再无聊时有所可玩！</p>
+        </div>
+
+        <div class="content-section">
             <h3>下载地址</h3>
             <p>服务器版本：1.21.1 Fabric</p>
             <p>点击下方链接下载客户端：</p>
@@ -170,7 +176,6 @@
             if (index === 0) {
                 button.classList.add('active');
             }
-            button.addEventListener('click', () => goToSlide(index));
             sliderNav.appendChild(button);
         });
 
@@ -178,7 +183,7 @@
         const interval = setInterval(() => {
             currentSlide = (currentSlide + 1) % totalSlides;
             goToSlide(currentSlide);
-        }, 8000); // 每5秒切换一次
+        }, 5000); // 每5秒切换一次
 
         // 切换到指定幻灯片
         function goToSlide(index) {
