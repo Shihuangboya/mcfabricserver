@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC Fabric 1.21.1服务器 - 发布故事</title>
+    <title>MC Fabric 1.21.1服务器 - 登录</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -95,5 +95,41 @@
             bottom: 0;
             width: 100%;
         }
+
+        .login-title {
+            text-align: center;
+        }
+
+        .login-msg {
+            text-align: center;
+        }
     </style>
 </head>
+<body>
+    <div class="navbar">
+        <h1>MC Fabric 1.21.1服务器</h1>
+        <p>登录</p>
+    </div>
+    <div class="container">
+        <div class="content-section">
+            <div class="login-title">
+                <h1>登录到您的账户</h1>
+                </div>
+            <form>
+                <h2>用户名：<br />
+                <input type="text" class="textinput" placeholder="请输入用户名" />
+                </h2>
+                <h2>密码：<br />
+                <input type="password" class="textinput" placeholder="请输入密码" />
+                </h2>
+                <p>
+                <input id="remember" type="checkbox" /><label for="smtxt">记住密码</label>
+                </p>
+                <p class="smtxt">还没有账户？<a href="signup.html">注册</a></p>
+                <p>
+                <input type="submit" value="登录" />
+                </p>    
+            </form>
+        </div>
+    </div>
+</body>
