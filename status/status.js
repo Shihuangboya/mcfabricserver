@@ -17,9 +17,9 @@ function updateStatus() {
     const statusText = document.getElementById('status-text');
 
     if (mockData.status === 'online') {
-        statusIndicator.style.backgroundColor = '#4CAF50';
+        statusIndicator.style.backgroundColor = '#4caf50ff';
         statusText.textContent = '服务器正常运行';
-        statusText.style.color = '#4CAF50';
+        statusText.style.color = '#4caf50ff';
     } else {
         statusIndicator.style.backgroundColor = '#f44336';
         statusText.textContent = '服务器离线';
