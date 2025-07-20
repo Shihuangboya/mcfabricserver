@@ -1,0 +1,119 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #2d2d2d;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #4CAF50;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* 状态卡片样式 */
+.status-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.status-indicator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    border: 2px solid #4CAF50;
+}
+
+#status-text {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* 信息表格样式 */
+.status-table {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+th {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+}
+
+/* 图表容器样式 */
+.chart-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* 历史记录样式 */
+.history-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.history-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(76, 175, 80, 0.05);
+    border-radius: 4px;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #2d2d2d;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    .status-card {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}

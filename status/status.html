@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Fabric 1.21.1服务器 - 服务器状态</title>
+    <link rel="stylesheet" href="status.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <h1>MC Fabric 1.21.1服务器</h1>
+        <p>生存 | 建造 | 红石</p>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <h2>服务器实时状态</h2>
+
+        <!-- 服务器状态卡片 -->
+        <div class="status-card">
+            <div class="status-indicator" id="status-indicator"></div>
+            <h3 id="status-text">获取状态中...</h3>
+            <p>IP地址：example.com:25565</p>
+        </div>
+
+        <!-- 服务器信息表格 -->
+        <div class="status-table">
+            <table>
+                <tr>
+                    <th>在线人数</th>
+                    <td id="online-players">-</td>
+                </tr>
+                <tr>
+                    <th>最大容量</th>
+                    <td id="max-players">-</td>
+                </tr>
+                <tr>
+                    <th>TPS</th>
+                    <td id="tps">-</td>
+                </tr>
+                <tr>
+                    <th>游戏版本</th>
+                    <td id="game-version">-</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- TPS趋势图表 -->
+        <div class="chart-container">
+            <canvas id="tps-chart"></canvas>
+        </div>
+
+        <!-- 历史记录 -->
+        <div class="history-container" id="history-container">
+            <h3>最近更新</h3>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>© 2024 MC Fabric 1.21.1服务器</p>
+    </div>
+
+    <script src="status.js"></script>
+</body>
+</html>
