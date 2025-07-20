@@ -15,7 +15,7 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
                 Swal.fire({
                     title: '注册失败',
                     text: '用户名已存在，请选择其他用户名！',
-                    icon: 'error'
+                    icon: 'warn'
                 });
                 return;
             }
