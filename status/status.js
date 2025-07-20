@@ -1,6 +1,6 @@
 // 模拟服务器数据（实际应从API获取）
 const mockData = {
-    status: 'offline',
+    status: 'online',
     onlinePlayers: 25,
     maxPlayers: 100,
     tps: 20,
